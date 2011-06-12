@@ -1,0 +1,26 @@
+Tweak the Tweet project
+
+Initial code by Kate Starbird - University of Colorado
+
+Tweak the Tweet asks users of Twitter (during crises) to format their tweets a specific way to make them machine-parseable.
+
+This project contains code to collect tweets and process them into a MySQL database and a public Google Spreadsheet.
+
+Requirements:
+Python (for the collection)
+Ruby (for the processing/MySQL/Google Spreadsheet API connection)
+MySQL
+
+
+To get started:
+1) Set up a MySQL database.
+
+3) Edit the config.yml file. You will need to set passwords, keys, collection terms, and filtering terms. You'll need a bounding box for the area. You can set geographic names to add to location text to send to GeoKit for geolocating. You can set primary tags, data tags, etc. You can also determine which primary tags must have geolocation to be accepted.
+
+4) Run the TtT_create_database.rb script to generate the correct tables. This will use the config file to determine what the tables look like.
+
+5) Edit the TtT_pickup.py code to include the terms you would like to collect on. You also need to set your Twitter username and password - and specify the MySQL connection details.
+
+6) Run the TtT_pickup.py code - and keep it running.
+
+7) Run the TtT_go.rb - and keep it running.
