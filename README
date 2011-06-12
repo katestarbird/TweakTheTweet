@@ -2,7 +2,7 @@ Tweak the Tweet project
 
 Initial code by Kate Starbird - University of Colorado
 
-Tweak the Tweet asks users of Twitter to format their tweets in certain ways to make them machine-parseable.
+Tweak the Tweet asks users of Twitter (during crises) to format their tweets a specific way to make them machine-parseable.
 
 This project contains code to collect tweets and process them into a MySQL database and a public Google Spreadsheet.
 
