@@ -1,0 +1,83 @@
+
+twitter_name: twitter_name
+twitter_password: twitter_password
+
+google_name: google_name
+google_password: google_password
+
+# this creates a spreadsheet that works well with the map, but might crash when edited while updating, suggest left uneditable
+google_spreadsheet_key: 0AkuhimfFYZrOdC1XQjk2NDNSQ2ZDcU5rYjU5dU9RMlE
+
+# this creates a spreadsheet that won't crash when people edit it, suggest left editable
+google_spreadsheet_key_backup: 0AkuhimfFYZrOdERPWVY1TWNlY2h2R0xjd01Va0ZNLXc
+
+database_name: TtT_Tornadoes
+
+RSS_feed: feed_name_RSS_can_be_empty
+KML_feed: feed_name_KML_can_be_empty
+website_link: link_to_website_map_or_other_for_RSS_feed
+
+PRIMARY_TRACK_LIST: ""
+
+# tweet table structure for the database - just in case we want to change this later, these categories have to differ from 2ndary tag categories
+# this is a good starting structure, only change if you need to
+database_tweets_table_structure: FIELD [text,varchar,200]; FIELD [author,varchar,40];
+                                FIELD [tweet_id,varchar,20]; FIELD [tweet_source,varchar,50];
+                                FIELD [time,datetime,]; FIELD [meta_gps_lat,varchar,30];
+                                FIELD [meta_gps_long,varchar,30]; FIELD [place,varchar,100];
+                                FIELD [place_url,varchar,100]; FIELD [bounding_box,varchar,500]; FIELD [user_location,varchar,200]
+
+
+# records table will have these fields, plus all tweet fields, plus all secondary tags categories
+# this is a good starting structure, only change if you need to
+database_records_table_structure: FIELD [type,varchar,30]; FIELD [report,varchar,135];
+                                  FIELD [gps_lat,varchar,30]; FIELD [gps_long,varchar,30];
+                                  FIELD [photo,varchar,50]; FIELD [video,varchar,50]
+
+# ; separated list, location string to add to the tweeted #loc location to get gps coords from geokit
+# when a tweet contains any term in the TAGS list (tagged or no), it will try to add all the text in the ADD_STRING when it attempts to geocode the tweet
+add_location_text: ADD_STRING ["Joplin, MO"] TAGS ["joplin","mohaves","moneeds","tornado"];
+                
+# bounded box that defines the area of the event, GPS coords outside this area will be considered errors
+bounding_box: 33.405766,-102.70752;41.52832,-87.993166
+
+# time offset from GMT in (-)n hours
+local_time_offset: -5.0
+
+# sleep seconds - wait time between processing
+sleep_duration: 500 
+sleep_duration_RSS: 120
+sleep_duraion_KML: 60
+
+# list of report types that require a location to be recorded (important for general terms, like #flood during a flood)
+general_types: "#photo,#video,#pix,#tornado,#donation,#response,#flood,#damage,#warning,#watch,#shelter"
+
+# TtT tag identifiers - typically primary tags w/o tags that are too general plus #loc #src #location and other TtT specific tag
+TtT_identifiers: "#evac,#shelter,#offer,#medical,#need ,#needmet,#offermet,#offer ,#loc ,#location,#smoke,#closed,#src,#ttt,#animal,#road ,#damage,#response,#contact"
+
+# list of known photo type links
+photo_types: "twitpic,tweetphoto,yfrog,moby\.to,goo\.gl,twitgoo,instagr\.am,pegd.at,plixi.com,flic.kr,post.ly,spo.gs"
+
+# list of known video type links
+video_types: "youtu\.be,eye\.tc,videos\.ph,twitvid"
+
+# list of primary tags in order of most specific to most general
+primary_tags: "#need,#medical,#offer,#shelter,#volunteer,#open,#power,#closed,#damage,#injury,#road,#response,#center,#evac,#found,#imok,#missing,#donation,#donate,#moneeds,#mohaves,#mooffer,#meeting,#info,#photo,#pix,#video"
+
+# list of secondary tags, each tag is a set - main tag for that category, plus other similar
+# ["#loc","#location","GPS"],[]
+# within [], no spaces after , - splits on ('","')
+
+secondary_tags: CATEGORY "location" TAGS ["#loc ","#location","#gps"]; CATEGORY "contact" TAGS ["#contact","#con ","#cont ","#tele ","#tel ","#call "];
+                CATEGORY "source" TAGS ["#source","#src "]; CATEGORY "date_time" TAGS ["#time ","#date "]; CATEGORY "details" TAGS ["#details","#info","#more"];
+                CATEGORY "geoop" TAGS ["#complete","#filled"]
+
+# order of labels/categories for the spreadsheet - converts to downcase for synching with records, upper-case for spreadsheet display only
+spreadsheet_order: "Type, Report, Time, Location, Text, Contact, Details, Date_Time, Source, GeoOp, GPS_Lat, GPS_Long, Photo, Video, Author, ID"
+
+# time offsets for database/spreadsheet synch and for communicating with developer, time between develop and GMT, time between event location and GMT
+time_offset_developer: -6.0
+time_offset_event_location: -5.0
+
+
+
