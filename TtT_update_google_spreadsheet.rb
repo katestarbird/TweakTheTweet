@@ -19,7 +19,7 @@ def update_Google_spreadsheet_from_MySQL(db)
   
   print "Logging in to Google...\n"
   session = GoogleSpreadsheet.login(@conf['google_name'], @conf['google_password'])
-  ws = session.spreadsheet_by_key(@conf['google_spreadsheet_key']).worksheets[0]
+  ws = session.spreadsheet_by_key(@conf['google_spreadsheet_key_private']).worksheets[0]
 
   el_num = 1  
   spreadsheet_fields = @conf["spreadsheet_order"].split(", ")
@@ -94,8 +94,7 @@ def update_MySQL_from_Google_spreadsheet(db)
   print "Logging in to Google...\n"
   session = GoogleSpreadsheet.login(@conf['google_name'], @conf['google_password'])
 
-  # https://spreadsheets.google.com/pub?key=0AkuhimfFYZrOdFBrTTlUc1dvRlVySXcwcDRpS2VBWVE&hl=en_GB&output=html
-  ws = session.spreadsheet_by_key(@conf['google_spreadsheet_key']).worksheets[0]
+  ws = session.spreadsheet_by_key(@conf['google_spreadsheet_key_private']).worksheets[0]
   
   print "Updating data from Google Spreadhseet...\n"
                                  
@@ -153,7 +152,7 @@ def find_last_row(ws)
 end
 
 # takes all of the current records in the MySQL database and updates them to the Google Spreadsheet
-def update_Google_spreadsheet_from_MySQL_2(db)
+def update_Google_spreadsheet_from_MySQL_public(db)
   # Logs in.
   # You can also use OAuth. See document of GoogleSpreadsheet.login_with_oauth for details.
   
@@ -163,7 +162,7 @@ def update_Google_spreadsheet_from_MySQL_2(db)
   session = GoogleSpreadsheet.login(@conf['google_name'], @conf['google_password'])
   
   # change title of spreadsheet to indicate updating
-  ss = session.spreadsheet_by_key(@conf['google_spreadsheet_key_backup'])  
+  ss = session.spreadsheet_by_key(@conf['google_spreadsheet_key_public'])  
   ws = ss.worksheets[0]
   table = ws.tables[0]
 
@@ -192,7 +191,7 @@ def update_Google_spreadsheet_from_MySQL_2(db)
   end
 
   begin
-    print "Updating data to Google Spreadsheet_2...\n"
+    print "Updating data to Google Spreadsheet_public...\n"
     ws.save()
     # change title back to indicate not updating  
   
