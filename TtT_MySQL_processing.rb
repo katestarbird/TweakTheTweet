@@ -167,7 +167,7 @@ def run_TtT_parsing_MySQL_with_Google_Spreadsheet()
   while (true) do
 
     # synch MySQL database with google spreadsheet
-  #  update_MySQL_from_Google_spreadsheet(db)
+    update_MySQL_from_Google_spreadsheet(db)
     
     # get the current time, print in local, convert to GMT for Twitter synching
     time = DateTime.now
@@ -177,9 +177,9 @@ def run_TtT_parsing_MySQL_with_Google_Spreadsheet()
 
     parse_recent_tweets_MySQL(db, since_time)
     
-    if @conf['google_spreadsheet_key'] && @conf['google_spreadsheet_key'] != ""
+    if @conf['google_spreadsheet_key'] && @conf['google_spreadsheet_key_public'] != ""
       # update the volunteer Google spreadsheet from the MySQL database - may be future only version
-      update_Google_spreadsheet_from_MySQL_2(db)    
+      update_Google_spreadsheet_from_MySQL_public(db)    
     end
     
     # update the Google spreadsheet from the MySQL database
