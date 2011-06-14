@@ -1,4 +1,3 @@
-
 twitter_name: twitter_name
 twitter_password: twitter_password
 
@@ -6,12 +5,12 @@ google_name: google_name
 google_password: google_password
 
 # this creates a spreadsheet that works well with the map, but might crash when edited while updating, suggest left uneditable
-google_spreadsheet_key: 0AkuhimfFYZrOdC1XQjk2NDNSQ2ZDcU5rYjU5dU9RMlE
+google_spreadsheet_key_private: key to your sheet like this... 0Akuhi????????????????cU5rYjU5d?????
 
 # this creates a spreadsheet that won't crash when people edit it, suggest left editable
-google_spreadsheet_key_backup: 0AkuhimfFYZrOdERPWVY1TWNlY2h2R0xjd01Va0ZNLXc
+google_spreadsheet_key_public: 0AkuhimfFYZrO?????????????xjd01V?????
 
-database_name: TtT_Tornadoes
+database_name: your_database_name
 
 RSS_feed: feed_name_RSS_can_be_empty
 KML_feed: feed_name_KML_can_be_empty
