@@ -66,6 +66,9 @@ def create_record_table(db, record_table_array, tweet_table_array)
   @secondary_hash.each_key do |category|
     structure_string += category + "\tvarchar(80), "
   end
+
+  # add in_SS field to records - with default = 0 - might need to adjust this a bit
+  structure_string += "in_SS tinyint DEFAULT 0,"
   
   structure_string += "PRIMARY KEY (id)"
   
